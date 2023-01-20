@@ -1,0 +1,155 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div class="row" style="width: 70%; height: 80%; margin:auto; margin-top: 50px;">
+ <div class="col-75">
+  <div class="container">
+   <form #payment="ngForm">
+
+    <div class="row">
+     <div class="col-50">
+      <h3>Billing Address</h3>
+      <label for="fname"><i class="fa fa-user"></i> Full Name</label>
+      <input type="text" id="fname" name="firstname" placeholder="John M. Doe" #fullname="ngModel" ngModel required
+       pattern="^[a-zA-Z]{4,}">
+      <div *ngIf="fullname.errors && (fullname.invalid || fullname.touched)">
+       <small id="fullname-sibling" *ngIf="fullname.errors?.['required'] && fullname.touched"> required</small>
+       <small id="fullname-sibling" *ngIf="fullname.errors?.['pattern']">must be more than 3 and letter only </small>
+      </div>
+
+
+
+      <label for="email"><i class="fa fa-envelope"></i> Email</label>
+      <input type="text" id="email" name="email" placeholder="john@example.com" #email="ngModel" ngModel required
+       pattern="^[a-z0-9]+@+\gmail+\.[a-z]{3,4}">
+      <div *ngIf="email.errors && (email.invalid || email.touched)">
+       <small id="fullname-sibling" *ngIf="email.errors?.['required'] && email.touched"> required</small>
+       <small id="fullname-sibling" *ngIf="email.errors?.['pattern']">Ex:- wael@example.com</small>
+      </div>
+
+
+      <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
+      <input type="text" id="adr" name="address" placeholder="542 W. 15th Street" #adress="ngModel" ngModel required
+       pattern="^[a-zA-Z]{4,}">
+      <div *ngIf="adress.errors && (adress.invalid || adress.touched)">
+       <small id="fullname-sibling" *ngIf="adress.errors?.['required'] && adress.touched"> required</small>
+       <small id="fullname-sibling" *ngIf="adress.errors?.['pattern']">must be more than 3 and letter only </small>
+
+
+      </div>
+
+
+      <label for="city"><i class="fa fa-institution"></i> City</label>
+      <input type="text" id="city" name="city" placeholder="New York" #city="ngModel" ngModel required
+       pattern="^[a-zA-Z]{2,}">
+      <div *ngIf="city.errors && (city.invalid || city.touched)">
+       <small id="fullname-sibling" *ngIf="city.errors?.['required'] && city.touched"> required</small>
+       <small id="fullname-sibling" *ngIf="city.errors?.['pattern']"> city must be more than 3 and letter only </small>
+
+
+      </div>
+
+      <div class="row">
+       <div class="col-50">
+        <!-- <label for="state">State</label>
+        <input type="text" id="state" name="state" placeholder="NY" #state="ngModel" ngModel required>
+        <div *ngIf="state.errors && (state.invalid || state.touched)">
+          <small id="fullname-sibling" *ngIf="state.errors?.['required'] && state.touched"> required</small> -->
+
+        <!-- </div> -->
+       </div>
+
+
+       <div class="col-50">
+        <label for="zip">Zip</label>
+        <input type="text" id="zip" name="zip" placeholder="10001" #Zip="ngModel" ngModel Required
+         pattern="[1-9][0-9][0-9]{0,2}" minlength="4" maxlength="4">
+        <div *ngIf="Zip.errors && (Zip.invalid || Zip.touched)">
+         <small id="fullname-sibling" *ngIf="Zip.errors?.['required'] && Zip.touched"> required</small>
+         <small id="fullname-sibling" *ngIf="Zip.errors?.['pattern']"> 4 Digit only </small>
+
+        </div>
+       </div>
+
+
+      </div>
+     </div>
+
+
+     <div class="col-50">
+      <h3>Payment</h3>
+      <label for="fname">Accepted Cards</label>
+      <div class="icon-container">
+       <i class="fa fa-cc-visa" style="color:navy; margin-right: 5px;"></i>
+       <i class="fa fa-cc-amex" style="color:blue;margin-right: 5px "></i>
+       <i class="fa fa-cc-mastercard" style="color:red;margin-right: 5px"></i>
+       <i class="fa fa-cc-discover" style="color:orange;margin-right: 5px"></i>
+      </div>
+
+      <label for="cname">Name on Card</label>
+      <input type="text" id="cname" name="cardname" placeholder="John More Doe" #card="ngModel" ngModel required
+       pattern="^[a-zA-Z]{4,}">
+      <div *ngIf="card.errors && (card.invalid || card.touched)">
+       <small id="fullname-sibling" *ngIf="card.errors?.['required'] && card.touched"> required</small>
+       <small id="fullname-sibling" *ngIf="card.errors?.['pattern']">must be more than 3 and letter only </small>
+      </div>
+
+
+      <label for="ccnum">Credit card number</label>
+      <input type="text" id="ccnum" name="cardnumber" placeholder="378-2822-4631-0006" required #cardd="ngModel" ngModel
+       pattern="^(?:(4[0-9]{12}(?:[0-9]{3})?)|(5[1-5][0-9]{14})|(6(?:011|5[0-9]{2})[0-9]{12})|(3[47][0-9]{13})|(3(?:0[0-5]|[68][0-9])[0-9]{11})|((?:2131|1800|35[0-9]{3})[0-9]{11}))$">
+      <div *ngIf="cardd.errors && (cardd.invalid || cardd.touched)">
+       <small id="fullname-sibling" *ngIf="cardd.errors?.['required'] && cardd.touched"> required</small>
+       <small id="fullname-sibling" *ngIf="cardd.errors?.['pattern']">Starting with 34 or 37, length 15 digits </small>
+      </div>
+
+
+      <label for="expmonth">CARD EXPIRY</label>
+
+      <input type="text" id="expmonth" name="expmonth" placeholder="YY/mm" #carddate="ngModel" ngModel required
+       pattern="^(0[1-9]|1[0-2])\/([0-9]{4}|[2-9]{2})$">
+
+      <div *ngIf="carddate.errors && (carddate.invalid || carddate.touched)">
+       <small id="fullname-sibling" *ngIf="carddate.errors?.['required'] && carddate.touched"> required</small>
+       <small id="fullname-sibling" *ngIf="carddate.errors?.['pattern']">Match mm/yy, requiring leading zeros</small>
+      </div>
+
+
+      <div class="row">
+       <div class="col-50">
+
+
+       </div>
+
+
+       <div class="col-50">
+        <label for="cvv">CVV</label>
+        <input type="text" id="cvv" name="cvv" placeholder="352" class="placeicon" minlength="3" maxlength="3" required
+         #vc="ngModel" ngModel pattern="[1-9][0-9]{0,2}">
+        <div *ngIf="vc.errors && (vc.invalid || vc.touched)">
+         <small id="fullname-sibling" *ngIf="vc.errors?.['required'] && carddate.touched"> required</small>
+         <small id="fullname-sibling" *ngIf="vc.errors?.['pattern']"> 3 Digit only </small>
+
+
+        </div>
+       </div>
+      </div>
+     </div>
+
+    </div>
+
+    <input (click)="Assign()" type="submit" [disabled]="payment.form.invalid" value="Continue to checkout" class="btn"
+     style="background-color: #d82a4e ;">
+   </form>
+  </div>
+ </div>
+
+ <div class="col-25">
+  <div class="container">
+   <h4>Cart
+    <span class="price" style="color:black">
+     <i class="fa fa-shopping-cart"></i>
+    </span>
+   </h4>
+   <p>{{item.crsTitle}} <span class="price">${{item.price}}</span></p>
+  </div>
+ </div>
+</div>

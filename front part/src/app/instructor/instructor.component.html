@@ -1,0 +1,134 @@
+
+<div class="container-xl px-4 mt-4" >
+ <!-- Account page navigation-->
+ <nav class="nav nav-borders" style="margin-top: 90px; margin-bottom: 5px;">
+  <button class="btn btn-dark" (click)="showDiv('profile')">Profile</button>
+  <button class="btn btn-dark" style="margin-left: 10px; margin-right: 10px;" (click)="showDiv('createcourse')">Create Courses</button>
+  <button class="btn btn-dark" (click)="showDiv('mycourses')">My Courses</button>
+ </nav>
+ <hr class="mt-0 mb-4">
+ <div class="row" *ngIf="displayedDiv == 'profile'">
+  <div class="col-xl-4" style="height: 163px;">
+   <!-- Profile picture card-->
+   <div class="card mb-4 mb-xl-0">
+    <div class="card-header" >Profile Picture</div>
+    <div class="card-body text-center">
+     <!-- Profile picture image-->
+     <img class="img-account-profile rounded-circle mb-2" src="http://bootdey.com/img/Content/avatar/avatar1.png"
+      alt="">
+    </div>
+   </div>
+  </div>
+  <div class="col-xl-8">
+   <!-- Account details card-->
+   <div class="card mb-4">
+    <div class="card-header">Account Details</div>
+    <div class="card-body">
+     <form>
+      <div class="row gx-3 mb-3">
+       <!-- Form Group (first name)-->
+       <div class="col-md-6">
+        <label class="small mb-1" for="inputFirstName"></label>
+        <input style="font-size:20px; font-weight:5px ; color:black;" readonly class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name"
+         value={{tokenInfo.firstName}}>
+       </div>
+       <!-- Form Group (last name)-->
+       <div class="col-md-6">
+        <label class="small mb-1" for="inputLastName"></label>
+        <input style="font-size:20px; font-weight:5px ; color:black;" readonly class="form-control" id="inputLastName" type="text" placeholder="Enter your last name"
+         value={{tokenInfo.lastName}}>
+       </div>
+      </div>
+      <div class="mb-3">
+       <label class="small mb-1" for="inputEmailAddress">Email address</label>
+       <input style="font-size:20px; font-weight:5px ; color:black;" readonly class="form-control" id="inputEmailAddress" type="email" placeholder="Enter your email address"
+        value={{tokenInfo.email[0]}}>
+      </div>
+      <!-- Form Row-->
+      <div class="row gx-3 mb-3">
+       <!-- Form Group (phone number)-->
+       <div class="col-md-6">
+        <label class="small mb-1" for="inputPhone">Username</label>
+        <input style="font-size:20px; font-weight:5px ; color:black;" readonly class="form-control" id="inputPhone" type="tel" placeholder="Enter your username"
+         value={{tokenInfo.userName}}>
+       </div>
+      </div>
+     </form>
+    </div>
+   </div>
+  </div>
+ </div>
+ <div class="form-style-6" style="width: 100%;" *ngIf="displayedDiv == 'createcourse'">
+  <h1 style="background-color: gray;">Create Course</h1>
+  <form #Create = "ngForm">
+
+    <!-- Course Title -->
+    <label style="margin-bottom: 5px;" for="">Course Title</label>
+   <input style="margin-bottom: 2px; width: 100%;" type="text" name="field1" placeholder="Course Title" #inputcoursetitle pattern="^[A-Z][a-z]*(\s[A-Z][a-z]*)+$" required #title ="ngModel" ngModel />
+  <div *ngIf="title.errors && (title.invalid || title.touched)">
+    <small id="fullname-sibling" style="color: red;" *ngIf="title.errors?.['required'] && title.touched"> required</small>
+    <small id="fullname-sibling" style="color: red;" *ngIf="title.errors?.['pattern']">must be more than 20 and letter only </small>
+  </div>
+
+
+<!-- textarea -->
+    <label for="" style="margin-bottom: 5px;">Description</label>
+   <textarea style="margin-bottom: 2px; width: 100%;" name="field3" placeholder="Description" #inputcoursedescription #desc="ngModel" required ngModel></textarea>
+  <small style="color: red;" id="fullname-sibling" *ngIf="desc.errors?.['required'] && desc.touched"> required</small><br>
+
+
+<!-- Price -->
+   <label for="" style="margin-bottom: 5px;">Price</label>
+   <input style="margin-bottom: 2px; width: 100%;" type="text" name="field3" placeholder="Price" #inputcourseprice  pattern="^\d{0,8}(\.\d{1,4})?$" #price = "ngModel" ngModel required />
+  <div *ngIf="price.errors && (price.invalid || price.touched)">
+    <small style="color: red;" id="fullname-sibling" *ngIf="price.errors?.['required'] && price.touched"> required</small>
+    <small style="color: red; margin-bottom: 5px;" id="fullname-sibling" *ngIf="price.errors?.['pattern']">Please insert a valid price value</small>
+  </div>
+
+
+
+   <label style="margin-bottom: 5px;">Choose Image</label>
+   <!-- <input type="file" name="field4" placeholder="ImagePath" id="file-id" accept="image/*" #inputcourseimagepath /> -->
+   <input style="margin-bottom: 2px; width: 100%;" type="file" name="field4" placeholder="ImagePath" id="file-id" accept="image/*"
+    #inputcourseimagepath />
+
+   <input style="margin-bottom: 2px; width: 100%;" type="text" name="field1" placeholder="Video Name" #inputvideoname #vid = "ngModel" ngModel pattern="/^[A-Z][a-z]*(\s[A-Z][a-z]*)+$" />
+  <div *ngIf="vid.errors && (vid.invalid || vid.touched)">
+    <small  style="color: red;" *ngIf="vid.errors?.['required'] && vid.touched"> required</small>
+    <small  style="color: red;" *ngIf="vid.errors?.['pattern']">must be more than 5 and letter only
+    </small>
+  </div>
+
+   <!-- Video Name -->
+   <label style="margin-bottom: 5px;">Choose Video</label>
+   <input style="margin-bottom: 2px; width: 100%;" type="file" name="field2" placeholder="video url" accept="video/*" multiple #inputvideourl />
+  
+<!-- .replace('C:\\fakepath\\', '../../assets/videos/') -->
+   <input style="margin-bottom: 2px; width: 100%;" style="background-color: gray;" type="button"
+    (click)="addcourse(inputcourseimagepath.value.replace('C:\\fakepath\\', '../../assets/img/'),inputcoursetitle.value,inputcoursedescription.value,+inputcourseprice.value,inputvideoname.value,inputvideourl.value.replace('C:\\fakepath\\', '../../assets/videos/'))"
+    value="Save" [disabled]="Create.form.invalid" />
+  </form>
+ </div>
+  <div class="row"*ngIf="displayedDiv == 'mycourses'">
+    <!-- categorie -->
+    <div class="col-lg-4 col-md-6" *ngFor="let item of items | paginate:{ itemsPerPage: 3, currentPage: p }">
+      <div class="categorie-item">
+        <img class="ci-thumb set-bg" src="../../../assets/img/categories/1.jpg">
+        <div class="ci-text">
+          <h5>Title: {{item.crsTitle}}</h5>
+          <p>Description: {{item.crsDesc|slice:0:20}}</p>
+          <span>Price: &nbsp;&nbsp; {{item.price}}$</span>
+          <input style="margin-bottom: 2px; width: 100%;" type="text" name="field1" placeholder="Video Name" #inputvideoname1
+            #vid="ngModel" ngModel pattern="^[a-zA-Z]{5,}" />
+          <input style="margin-bottom: 2px; width: 100%;" type="file" name="field2" placeholder="video url" accept="video/*" #inputvideourl1 />
+          <br><br><br>
+          <span><input type="button" value="Add More Videos" (click)="addMoreVideos(item.crsId, inputvideoname1.value,inputvideourl1.value.replace('C:\\fakepath\\', '../../assets/videos/'))"
+                class="btn btn-dark"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <pagination-controls *ngIf="displayedDiv == 'mycourses'"  (pageChange)="p = $event" class="float-right" style="text-align:center; font-size:20px;">
+  </pagination-controls>
+
+ 

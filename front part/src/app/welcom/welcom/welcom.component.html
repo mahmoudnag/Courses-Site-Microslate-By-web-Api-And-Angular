@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>WebUni - Education Template</title>
+	<meta charset="UTF-8">
+	<meta name="description" content="WebUni Education Template">
+	<meta name="keywords" content="webuni, education, creative, html">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Favicon -->
+	<link href="../../../assets/img/favicon.ico" rel="shortcut icon"/>
+
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Raleway:400,400i,500,500i,600,600i,700,700i,800,800i" rel="stylesheet">
+
+
+</head>
+<body>
+	<!-- Page Preloder -->
+	<div id="preloder">
+		<div class="loader"></div>
+	</div>
+
+
+	<!-- Header section -->
+	<header class="header-section">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-3 col-md-3">
+					<div class="site-logo">
+						<img src="../../../assets/img/logo.png" alt="">
+					</div>
+					<div class="nav-switch">
+						<i class="fa fa-bars"></i>
+					</div>
+				</div>
+				<div class="col-lg-9 col-md-9">
+
+					<nav class="main-menu">
+						<ul>
+							<li><a routerLink="/welcom">Home</a></li>
+							<li><a routerLink="/welcom">About us</a></li>
+							<li><a routerLink="/courses">Courses</a></li>
+							<li><a routerLink="/logout" *ngIf="isLogged">Logout</a></li>
+							<li><a routerLink="/instructor" *ngIf="!isInstructor && isLogged">Instructor</a></li>
+							<li><a routerLink="/student" *ngIf="isInstructor && isLogged">Student</a></li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</header>
+	<!-- Header section end -->
+
+
+	<!-- Hero section -->
+  <section class="hero-section set-bg">
+    <img  src="../../../assets/img/bg.jpg"  >
+		<div class="container" >
+			<div class="hero-text" >
+				<h2 style="	color: #d82a4e;">Get The Best Free Online Courses</h2>
+				<p style="color: white;"> Online Learning is a broad term that includes the practice of online education,
+           <br> online learning is enabled by web technology that helps teachers and learners who are geographically
+            distributed to interact with each other synchronously </p>
+            <a welcome="/regest" routerLink="/regest" href="#" class="site-btn header-btn" style="margin-right: 400px; text-decoration:none ;
+             margin-top: 40px ;" *ngIf="!isLogged">Registration now </a>
+              <a welcome="/regest" routerLink="login" class="site-btn header-btn" style="margin-right: 400px; text-decoration:none ;
+              margin-top: 40px ;" *ngIf="!isLogged">Login now </a>
+			</div>
+		</div>
+
+
+  </section>
+
+<!-- categories section
+<section class="categories-section spad">
+  <div class="container">
+    <div class="section-title">
+      <h2>Our Course Categories</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada lorem maximus mauris scelerisque, at rutrum nulla dictum. Ut ac ligula sapien. Suspendisse cursus faucibus finibus.</p>
+    </div>
+    <div class="row">
+      <div class="col-lg-4 col-md-6">
+        <div class="categorie-item">
+          <img class="ci-thumb set-bg" src="../../../assets/img/categories/1.jpg">
+          <div class="ci-text">
+            <h5>IT Development</h5>
+            <p>Lorem ipsum dolor sit amet, consectetur</p>
+            <span>120 Courses</span>
+          </div>
+        </div>
+      </div> -->
+<!-- categories section end -->
+
+
+	
+				<div class="copyright"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank"></a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></div>
+	<!-- footer section end -->
+

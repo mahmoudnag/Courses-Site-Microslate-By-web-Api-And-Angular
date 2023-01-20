@@ -1,0 +1,23 @@
+
+
+ <div class="container">
+
+  <div class="main-video-container">
+   <video src="{{mainurl}}" loop controls class="main-video"></video>
+   <h3 class="main-vid-title">{{name}}</h3>
+  </div>
+
+  <div class="video-list-container">
+
+   <div class="list" *ngFor="let item of videos">
+    <video src="{{item.url}}" class="list-video" (click)="change_vedio(mainvideo.src,maintitle.innerHTML)"
+     #mainvideo></video>
+    <h3 class="list-title" #maintitle>{{item.name}}</h3>
+   </div>
+  </div>
+ </div>
+ <span> <a> <input [routerLink]="['cert/',crs.crsId]" type="button" value="Watch Content"
+    class="btn btn-dark"></a></span>
+
+ <!-- custom js file link  -->
+ <!-- <script src="js/script.js"></script> -->

@@ -1,0 +1,52 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <link rel="icon" href="/imgs/logo2.jpeg" />
+    <title>login</title>
+</head>
+
+<body>
+
+    <div id="LoginForm">
+        <div class="containerL">
+            <div class="titleL">Login</div>
+
+
+            <form action="Home.html" id="formID" #loginform="ngForm" (ngSubmit)="loginService()">
+                <div class="user-detailsL">
+                  <!-- email feild and validation -->
+                  <div class="input-boxL">
+                    <span class="details"> Email</span>
+                    <input id="emaill" name="email"   #email="ngModel" [(ngModel)]="logVM.email"
+                     type="text" placeholder=" EX:- wael@gmail.com" required>
+                </div>
+
+
+                        <!-- password feild and validation -->
+                <div class="input-boxL">
+                  <span class="details"> Password</span>
+                  <input id="pawws"   #pass="ngModel" name="pass"   [(ngModel)]="logVM.password"
+                   type="password" placeholder="Enter paswword" required>
+                </div>
+                </div>
+                <p style="color: red; font-size:18px ;">{{erro}}</p>
+
+
+
+                       <!-- submit button -->
+                <div class="button">
+                    <input [disabled]="loginform.form.invalid" type="submit"  value="Login" id="submit-btn">
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

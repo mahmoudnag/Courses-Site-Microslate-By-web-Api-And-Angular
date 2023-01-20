@@ -1,0 +1,35 @@
+<div class="container">
+ <div class="row">
+  <div *ngFor="let arr of course">
+   <div></div>
+
+
+   <div style="" *ngFor="let item of arr">
+
+    <div class="card" style="width: 18rem; margin:auto;">
+
+     <img class="card-img-top" src="{{item.path}}" alt="Card image cap">
+     <div class="card-body">
+      <h5 class="card-title">{{item.title}}</h5>
+      <p class="card-text">{{item.description}}</p>
+      <h5 class="card-title">{{item.price}}$</h5>
+     </div>
+    </div>
+
+    <div style="height: 50px;"></div>
+   </div>
+  </div>
+ </div>
+
+</div>
+<div style="height: 100px;">
+ <p>{{getallprice()}}</p>
+</div>
+
+
+<div class="card-body" style="background-color:rgb(49, 147, 49); 
+  text-align: center; width: 60%; margin: auto;border-radius: 5px;">
+ <a href="#" class="card-link" style="text-decoration: none;color:rgb(41, 39, 39);font-size: larger;font-weight: bold;">
+  Buy</a>
+
+</div>

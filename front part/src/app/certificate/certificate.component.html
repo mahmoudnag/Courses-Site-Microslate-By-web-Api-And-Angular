@@ -1,0 +1,22 @@
+
+<div class="mt-5" id="htmltable" #htmltable>
+ <div style="width:1000px; height:500px; padding:20px; text-align:center;
+  border: 10px solid #787878; margin-left: 13%; margin-top: 90px;">
+  <div style="width:900px; height:450px; padding:20px; text-align:center; border: 5px solid #787878;
+   background-color: rgb(255, 255, 255); margin-left: 22px; margin-bottom: 8px;">
+   <span style="font-size:50px; font-weight:bold">Certificate of MicroSlate</span>
+   <br><br>
+   <span style="font-size:25px"><i>This is to certify that</i></span>
+   <br><br>
+   <span style="font-size:30px; font-style: italic; color: rgb(207, 55, 28); "><b>{{tokenInfo.firstName + " " +
+     tokenInfo.lastName}}</b></span><br /><br />
+   <span style="font-size:25px"><i>has completed the course</i></span> <br /><br />
+   <span style="font-size:30px">{{item.crsTitle}}</span> <br /><br />
+   <span style="font-size:20px"> On Date of <b>{{ myDate|date }}</b></span> <br /><br /><br /><br />
+   <span style="font-size:25px"></span><br>
+   <span style="font-size:30px"></span>
+  </div>
+ </div>
+ <button style="background-color:rgb(185, 237, 161);" class="btn btn-primary btn-block"
+  (click)="exportHtmlToPDF()">Download Certificate</button>
+</div>

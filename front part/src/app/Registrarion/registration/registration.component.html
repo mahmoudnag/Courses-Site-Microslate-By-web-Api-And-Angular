@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Free Web tutorials">
+    <meta name="keywords" content="HTML, CSS, JavaScript">
+    <meta name="author" content="John Doe">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="css/regStyle.css"> -->
+    <link rel="icon" href="/imgs/logo2.jpeg" />
+</head>
+
+<body>
+
+    <div class="container" style="margin-top:50px ;">
+
+        <div class="title">Registration</div>
+
+        <form class="formm" action="#" #regestrationform = "ngForm"  (ngSubmit)="regService()">
+
+
+            <div class="userdetails">
+
+               <!-- first name feild and validation -->
+                <div class="input-box"  >
+                    <span class="details"> First Name</span>
+                    <input name="firstt" #first="ngModel" [class.is-invalid]="first.invalid && first.touched"
+                     [(ngModel)]="regVM.firstName" id="fullname" type="text" placeholder="EX:- Wael"
+
+                     pattern="^[a-zA-Z]{3,}"   required>
+                     <div *ngIf="first.errors && (first.invalid || first.touched)">
+                      <small id="fullname-sibling" *ngIf="first.errors?.['required'] && first.touched"> required</small>
+                      <small id="fullname-sibling" *ngIf="first.errors?.['pattern']">must be more than 3 and letters only </small>
+                     </div>
+
+                    </div>
+
+                     <!-- last name feild and validation -->
+
+
+                <div class="input-box">
+                    <span class="details"> Last Name</span>
+                    <input id="userNameVal"  name="last" [class.is-invalid]="last.invalid && last.touched"
+                    #last="ngModel" [(ngModel)]="regVM.lastName"  type="text" placeholder="EX :- khater " required  pattern="^[a-zA-Z]{3,}" >
+                    <div *ngIf="last.errors && (last.invalid || last.touched)">
+                      <small id="fullname-sibling" *ngIf="last.errors?.['required'] && last.touched"> required</small>
+                      <small id="fullname-sibling" *ngIf="last.errors?.['pattern']">must be more than 3 and letters only </small>
+                     </div>
+
+                </div>
+
+                <!-- Username -->
+                <div class="input-box">
+                  <span class="details"> Username</span>
+                  <input name="last" [class.is-invalid]="username.invalid && last.touched" #username="ngModel"
+                    [(ngModel)]="regVM.userName" type="text" placeholder="EX :- khater " required pattern="^[a-zA-Z]{3,}">
+                  <div *ngIf="username.errors && (username.invalid || username.touched)">
+                    <small id="fullname-sibling" *ngIf="username.errors?.['required'] && username.touched"> required</small>
+                    <small id="fullname-sibling" *ngIf="username.errors?.['pattern']">must be more than 3 and letters only </small>
+                  </div>
+                
+                </div>
+                 <!-- Email feild and validation -->
+
+                <div class="input-box">
+                    <span class="details"> Email</span>
+                    <input id="emaill" name="email"   #email="ngModel" [(ngModel)]="regVM.email" 
+                     type="text" placeholder=" EX:- wael@gmail.com" required pattern="^[a-z0-9]+@+\gmail+\.[a-z]{3,4}">
+                    <div *ngIf="email.errors && (email.invalid || email.touched)">
+                      <small id="fullname-sibling" *ngIf="email.errors?.['required'] && email.touched"> required</small>
+                      <small id="fullname-sibling" *ngIf="email.errors?.['pattern']">invalid Email</small>
+                     </div>
+                </div>
+
+
+ <!-- password feild and validation -->
+                <div class="input-box">
+                    <span class="details">Password</span>
+                    <input id="pawws" [(ngModel)]="x" #pass="ngModel" name="pass"[(ngModel)]="regVM.password"
+                     type="password" placeholder="Enter Password" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$">
+                    <div *ngIf="pass.errors && (pass.invalid || pass.touched)">
+                      <small id="fullname-sibling" *ngIf="pass.errors?.['required'] && pass.touched"> required</small>
+                      <small id="fullname-sibling" *ngIf="pass.errors?.['pattern']">Password must be more than 8 chatacter includes 1 Digit, Small Letter, Capital letter and a Special Chatacter</small><br>
+                      <!-- <small id="fullname-sibling" *ngIf="pass.errors?.['pattern']"> invalid password</small> -->
+                     </div>
+                  </div>
+                  <!-- confirm feild and validation -->
+
+
+                <div class="input-box" style="margin-left: 37px">
+                    <span class="details"> Confirm Password</span>
+                    <input id="confirmm"  #confirm="ngModel" name="confirmpass" [(ngModel)]="y" type="password"
+                      placeholder="Confirm Password" required  validateEqual="pass">
+                    <div *ngIf="confirm.errors && (confirm.invalid || confirm.touched)">
+                      <small id="fullname-sibling" *ngIf="confirm.errors?.['required'] && confirm.touched"> required</small>
+                     </div>
+                    <p style="color: red; font-size: 17px;" [class.d-none]="x==y || confirm.untouched">Confirm Not Match Password</p>
+                </div>
+                <p style="color: red; font-size:18px ;">{{err}}</p>
+
+
+
+
+                   <!-- student and instructor fildes -->
+                <div class="input-box">
+                  <span class="details"> Select  Type</span>
+
+                  <span class="details"> As Student </span>
+                  <input style="width: 15px ;height:15px;" name="student" [(ngModel)]="regVM.Usertype"
+                  value="User" type="radio" required>
+                  <span class="details"> As Instructor</span>
+                  <input style="width: 15px ;height:15px;" name="student" [(ngModel)]="regVM.Usertype"
+                 value="Instructor" type="radio"  required>
+              </div>
+<!-- registre button -->
+
+                <div class="button" >
+                  <input style="background-color: gray;" 
+                   [disabled]="regestrationform.form.invalid" id="submitButn" class="finally" type="submit" name="" value="Register" >
+              </div>
+            </div>
+        </form>
+    </div>
+
+</body>
+
+

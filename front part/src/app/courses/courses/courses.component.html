@@ -1,0 +1,36 @@
+
+<!-- categories section -->
+<section class="categories-section spad">
+  <div class="container">
+    <div class="section-title">
+      <h2 style="color: #d82a4e;" >Our Courses</h2>
+      <p style="color:white ; font-size: 17px;">This means that courses provide a wide scope of studies that develop students both as intelligent individuals and future
+      professionals.Much will also depend on the teaching approaches applied by the professors to properly present course
+      materials to the students</p>
+    </div>
+    <form class="d-flex">
+      <input style="margin-bottom: 30px; width: 30%; margin-left: 35%;" class="form-control me-2" type="search" name="searchInput" [(ngModel)]="searchInput"
+        placeholder="Search by title" aria-label="Search">
+      <!-- <button class="btn btn-outline-success" type="submit">Search</button> -->
+    </form>
+    <div class="row" >
+      <!-- categorie -->
+      <div class="col-lg-4 col-md-6" *ngFor="let item of items | search: searchInput | paginate:{ itemsPerPage: 6, currentPage: p }">
+        <div class="categorie-item">
+          <img class="ci-thumb set-bg" src={{item.imagpath}}>
+          <div class="ci-text">
+            <a style="text-decoration:none ; font-size:large; color:black" [routerLink]="['details/',item.crsId]">Title: {{item.crsTitle}}</a>
+            <p>Description: {{item.crsDesc|slice:0:20}}</p>
+            <span>Price: &nbsp;&nbsp;{{item.price}}$</span>
+            <br>
+            <span> <a> <input type="button" value="Enroll" [routerLink]="['pay/',item.crsId]" class="btn btn-dark">
+                </a></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<pagination-controls (pageChange)="p = $event" class="float-right" style="text-align:center; font-size:20px; background-color: azure;">
+</pagination-controls>
+<!-- categories section end -->
